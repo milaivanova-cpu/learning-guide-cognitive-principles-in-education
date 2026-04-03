@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Защо не обичат учениците училище — 10 принципа</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f2eb;
+  --ink:#1c1a14;
+  --cream:#fffdf6;
+  --sand:#e8e2d5;
+  --sand2:#d4ccb8;
+  --red:#c0392b;
+  --red-light:#fdf0ee;
+  --red-border:#e8b8b3;
+  --gold:#b8860b;
+  --gold-light:#fdf8ec;
+  --gold-border:#e8d8a0;
+  --green:#2d6a4f;
+  --green-light:#edf5f1;
+  --green-border:#a8d5bf;
+  --blue:#1a3a5c;
+  --blue-light:#eef3f9;
+  --blue-border:#a8c4e0;
+  --muted:#6b6558;
+  --r:16px;--r-sm:10px;
+  --shadow:0 2px 12px rgba(28,26,20,.08);
+  --shadow-lg:0 8px 32px rgba(28,26,20,.12);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;line-height:1.65}
+button,select,input{font-family:inherit}
+
+/* ── WRAP ── */
+.wrap{max-width:1320px;margin:0 auto;padding:28px 20px 80px}
+
+/* ── HERO HEADER ── */
+.hero{background:var(--ink);border-radius:24px;padding:40px 44px 36px;margin-bottom:24px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:320px;height:320px;border-radius:50%;background:var(--red);opacity:.12}
+.hero::after{content:'';position:absolute;bottom:-60px;left:20%;width:220px;height:220px;border-radius:50%;background:var(--gold);opacity:.10}
+.hero-inner{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end}
+.hero-text{}
+.hero-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,4vw,3rem);color:#fff;line-height:1.1;margin-bottom:10px}
+.hero h1 em{font-style:italic;color:#e8c97a}
+.hero-sub{font-size:.9rem;color:rgba(255,255,255,.55);font-weight:300;max-width:540px;line-height:1.7}
+.view-btns{display:flex;gap:8px;flex-shrink:0}
+.vbtn{padding:10px 20px;border-radius:var(--r-sm);font-size:.82rem;font-weight:600;border:1.5px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.6);cursor:pointer;transition:.2s}
+.vbtn.on{background:#fff;color:var(--ink);border-color:#fff}
+.vbtn:not(.on):hover{border-color:rgba(255,255,255,.5);color:#fff}
+
+/* ── CONTROLS BAR ── */
+.controls{display:grid;grid-template-columns:1.6fr 1fr;gap:12px;margin-bottom:24px}
+.ctrl-wrap label{display:block;font-size:.72rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.ctrl-input{width:100%;background:var(--cream);border:1.5px solid var(--sand2);border-radius:var(--r-sm);padding:11px 16px;font-size:.88rem;color:var(--ink);outline:none;transition:.15s}
+.ctrl-input:focus{border-color:var(--ink)}
+
+/* ── MAP VIEW ── */
+.map-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+
+/* ── CARDS COLUMN ── */
+.cards-col{background:var(--cream);border-radius:var(--r);padding:22px;border:1.5px solid var(--sand)}
+.col-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.col-title{font-family:'DM Serif Display',serif;font-size:1.15rem}
+.col-count{background:var(--sand);font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:20px;color:var(--muted)}
+.cards-list{display:flex;flex-direction:column;gap:8px}
+.p-card{width:100%;text-align:left;border:1.5px solid var(--sand);border-radius:var(--r-sm);padding:14px 16px;background:var(--bg);cursor:pointer;transition:.18s;position:relative;overflow:hidden}
+.p-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent;transition:.18s}
+.p-card:hover{background:#fff;border-color:var(--sand2);transform:translateX(2px)}
+.p-card.on{background:#fff;border-color:var(--ink)}
+.p-card.on::before{background:var(--ink)}
+.p-card-row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.p-card-ch{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.p-card-diff{font-size:.65rem;font-weight:600;background:var(--sand);border-radius:20px;padding:2px 8px;color:var(--muted);flex-shrink:0}
+.p-card-short{font-size:.9rem;font-weight:600;color:var(--ink);margin-top:4px;line-height:1.35}
+.p-card-cat{font-size:.75rem;color:var(--muted);margin-top:3px}
+.p-card.on .p-card-ch,.p-card.on .p-card-cat{color:var(--muted)}
+
+/* ── DETAIL COLUMN ── */
+.detail-col{background:var(--cream);border-radius:var(--r);padding:28px;border:1.5px solid var(--sand);animation:pop .22s ease}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.d-eyebrow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.d-tag{font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--sand);color:var(--muted);padding:3px 10px;border-radius:20px}
+.d-title{font-family:'DM Serif Display',serif;font-size:1.45rem;line-height:1.25;margin-bottom:6px}
+.d-principle{font-size:.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+.d-why{font-size:.9rem;line-height:1.75;color:#3a3730;font-weight:300;border-left:3px solid var(--sand2);padding-left:14px;margin-bottom:22px}
+
+.d-section{margin-bottom:16px;border-radius:var(--r-sm);border:1.5px solid var(--sand);padding:16px 18px}
+.d-section-title{font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.moves-list{list-style:none;display:flex;flex-direction:column;gap:7px}
+.moves-list li{display:flex;gap:10px;font-size:.86rem;line-height:1.65;color:#3a3730}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--ink);flex-shrink:0;margin-top:7px}
+
+.d-section.warn{background:var(--red-light);border-color:var(--red-border)}
+.d-section.warn .d-section-title{color:var(--red)}
+.d-section.warn p{font-size:.86rem;line-height:1.7;color:#6b2020}
+
+.d-section.ex{background:var(--green-light);border-color:var(--green-border)}
+.d-section.ex .d-section-title{color:var(--green)}
+.d-section.ex p{font-size:.86rem;line-height:1.7;color:#1e4a36;white-space:pre-line}
+
+.d-section.tip{background:var(--gold-light);border-color:var(--gold-border)}
+.d-section.tip .d-section-title{color:var(--gold)}
+.d-section.tip p{font-size:.86rem;line-height:1.7;color:#5a4400}
+
+.d-section.qs{}
+.q-list{display:flex;flex-direction:column;gap:7px}
+.q-item{background:var(--bg);border-radius:8px;padding:9px 13px;font-size:.84rem;line-height:1.6;color:var(--ink);counter-increment:q}
+.q-item::before{content:counter(q)'. ';font-weight:700;color:var(--muted)}
+.qs-wrap{counter-reset:q}
+
+.empty-state{border:2px dashed var(--sand2);border-radius:var(--r-sm);padding:48px;text-align:center;color:var(--muted);font-size:.9rem}
+
+/* ── PATH VIEW ── */
+.path-wrap{background:var(--cream);border-radius:var(--r);padding:32px 36px;border:1.5px solid var(--sand)}
+.path-wrap h2{font-family:'DM Serif Display',serif;font-size:1.6rem;margin-bottom:8px}
+.path-wrap > p{font-size:.9rem;color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:32px;font-weight:300}
+.path-steps{display:flex;flex-direction:column;gap:24px}
+.path-step{border:1.5px solid var(--sand);border-radius:var(--r);padding:22px 26px}
+.path-step-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.step-num{width:42px;height:42px;border-radius:12px;background:var(--ink);color:#fff;font-family:'DM Serif Display',serif;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.path-step-head h3{font-family:'DM Serif Display',serif;font-size:1.15rem}
+.path-step-head p{font-size:.8rem;color:var(--muted)}
+.path-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.path-card{background:var(--bg);border:1.5px solid var(--sand);border-radius:var(--r-sm);padding:16px 18px}
+.path-card-meta{display:flex;justify-content:space-between;margin-bottom:6px}
+.path-card-ch{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.path-card-cat{font-size:.65rem;font-weight:600;background:var(--sand);border-radius:20px;padding:2px 8px;color:var(--muted)}
+.path-card h4{font-size:.95rem;font-weight:600;line-height:1.3;margin-bottom:6px}
+.path-card p{font-size:.82rem;line-height:1.65;color:var(--muted)}
+.mini{margin-top:10px;background:var(--cream);border:1px solid var(--sand);border-radius:8px;padding:10px 13px;font-size:.8rem;line-height:1.6;color:var(--ink)}
+.mini strong{font-weight:700}
+
+/* ── FOOTER ── */
+.footer{background:var(--ink);border-radius:var(--r);padding:26px 36px;margin-top:24px}
+.footer h2{font-family:'DM Serif Display',serif;color:#fff;font-size:1.1rem;margin-bottom:16px}
+.footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.f-box{background:rgba(255,255,255,.08);border-radius:var(--r-sm);padding:16px 18px}
+.f-num{font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#e8c97a;margin-bottom:6px}
+.f-box p{font-size:.82rem;line-height:1.65;color:rgba(255,255,255,.6)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .map-grid{grid-template-columns:1fr}
+  .controls{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .path-wrap{padding:22px}
+}
+@media(max-width:640px){
+  .hero{padding:26px 22px}
+  .hero-inner{flex-direction:column;align-items:flex-start}
+  .wrap{padding:14px 12px 60px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Интерактивна карта за учители (0–5 години опит)</div>
+      <h1>Защо не обичат учениците<br><em>училище?</em></h1>
+      <p class="hero-sub">10 принципа от книгата на Daniel Willingham — резюмирани и адаптирани за практиката в класната стая</p>
+    </div>
+    <div class="view-btns">
+      <button class="vbtn on" id="btn-map" onclick="setView('map')">Карта</button>
+      <button class="vbtn" id="btn-path" onclick="setView('path')">Пътека</button>
+    </div>
+  </div>
+</header>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="ctrl-wrap">
+    <label for="search">Търси</label>
+    <input class="ctrl-input" id="search" type="text" placeholder="работна памет, практика, технологии..." oninput="render()">
+  </div>
+  <div class="ctrl-wrap">
+    <label for="cat-sel">Тема</label>
+    <select class="ctrl-input" id="cat-sel" onchange="render()">
+      <option value="">Всички теми</option>
+    </select>
+  </div>
+</div>
+
+<!-- MAP VIEW -->
+<div id="view-map">
+  <div class="map-grid">
+    <div class="cards-col">
+      <div class="col-head">
+        <span class="col-title">Принципи</span>
+        <span class="col-count" id="cnt">10</span>
+      </div>
+      <div class="cards-list" id="cards"></div>
+    </div>
+    <div class="detail-col" id="detail"></div>
+  </div>
+</div>
+
+<!-- PATH VIEW -->
+<div id="view-path" style="display:none">
+  <div class="path-wrap">
+    <h2>Пътека за начинаещия учител</h2>
+    <p>Принципите са наредени като практичен маршрут: първо разбираш как работи ученето, после как се развива майсторство, и накрая — от какви заблуди да се пазиш.</p>
+    <div class="path-steps" id="path-steps"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <h2>Как да ползваш картата</h2>
+  <div class="footer-grid">
+    <div class="f-box"><div class="f-num">Преди урок</div><p>Избери един принцип и провери дали планът ти го отразява.</p></div>
+    <div class="f-box"><div class="f-num">След урок</div><p>Ползвай въпросите за рефлексия и запиши едно конкретно подобрение.</p></div>
+    <div class="f-box"><div class="f-num">В екип</div><p>Отворете картата заедно — кой принцип най-много липсва в практиката ви?</p></div>
+  </div>
+</footer>
+</div>
+
+<script>
+const data = [
+  {
+    id:1,
+    ch:"Принцип 1",
+    short:"Хората са любопитни, но не са добри мислители по природа",
+    principle:"Хората са естествено любопитни, но не сме естествено добри мислители; освен ако когнитивните условия не са подходящи, ще избягваме мисленето.",
+    cat:"Мислене и внимание",
+    diff:"Начало",
+    why:"Мисленето — комбинирането на информация по нови начини — е бавно, изисква усилие и е несигурно. Повечето пъти разчитаме на паметта, която ни ръководи на автопилот. Хората са любопитни, но любопитството е крехко. Удоволствието идва от решаването на проблеми, а не от самото им решаване — трябва да преценим, че усилието ще се изплати.",
+    moves:[
+      "Уверявай се, че има проблем за решаване — не само инструкции за изпълнение.",
+      "Уважавай когнитивните граници на учениците.",
+      "Започвай с края наум — каква е крайната цел.",
+      "Знай кога да предизвикаш объркване (и кога не).",
+      "Помни, че учениците идват с различни предварителни знания.",
+      "Мисли как те преценяват ползата от усилието.",
+      "Сменяй ритъма редовно — промяната грабва вниманието."
+    ],
+    warn:"Не бъркай объркването с учене. Ако задачата претоварва работната памет, учениците ще се откажат.",
+    ex:"Вместо: 'Прочетете текста и отговорете на въпросите.'\nОпитай: 'Кое решение на героя смятате за най-важно и защо?' — така даваш реален проблем за мислене.",
+    tip:"Планирай по една силна мисловна задача на урок. Не пет.",
+    qs:["Има ли реален проблем за решаване в урока ми?","Учениците имат ли нужната опора, за да започнат?","Как преценяват дали усилието си струва?"]
+  },
+  {
+    id:2,
+    ch:"Принцип 2",
+    short:"Уменията за мислене зависят от фактическото знание",
+    principle:"Уменията за мислене зависят от фактическото знание и мисленето от по-висок порядък е преплетено със знанието.",
+    cat:"Знание и разбиране",
+    diff:"Начало",
+    why:"Знанието е необходимо за: четивно разбиране (дава речник, запълва пропуски, освобождава работната памет чрез дългосрочната памет), когнитивни умения (разпознаване на сходни проблеми, обобщения) и подобряване на паметта (новото е по-лесно да придобие смисъл, когато има на какво да се закачи).",
+    moves:[
+      "Мисленето не е процес, отделен от знанието — те са преплетени.",
+      "Преподавай обединяващите понятия, необходими за темата.",
+      "Питай не 'Какви факти да знаят?', а 'Какво искам да могат да правят с тях?'",
+      "Повърхностното знание е по-добро от никакво.",
+      "Включвай колкото може повече знание — явно и косвено — в учебния ден.",
+      "Знанието трябва да е смислено, а не просто списък от факти."
+    ],
+    warn:"'Умения на 21. век' без съдържание остават кухи. Стратегиите за мислене помагат, но не са достатъчни сами по себе си.",
+    ex:"Преди дебат за климатични политики, първо изгради основа: парников ефект, видове емисии, енергийни източници, интереси на различните групи. Без тази основа дебатът е само шум.",
+    tip:"Питай се не само 'Какво да знаят?', а 'Какво да могат да правят с това знание?'",
+    qs:["Кое знание е задължително за тази задача?","Какво ще стане трудно, ако учениците не го знаят?","Колко смислено знание съм включил/а в урока?"]
+  },
+  {
+    id:3,
+    ch:"Принцип 3",
+    short:"Паметта е следата от мисленето",
+    principle:"Паметта е следата от мисленето — запомняме онова, за което мислим.",
+    cat:"Памет и запомняне",
+    diff:"Начало",
+    why:"Забравяме поради: нямахме внимание / не попадна в дългосрочната памет / не можем да го извлечем / вече го няма в паметта. Нужно е материалът да бъде в работната памет достатъчно дълго (внимание) И да се обмисли по правилния начин. Добрите учители са добре организирани разказвачи.",
+    moves:[
+      "Планирай учениците да мислят за правилния аспект на смисъла.",
+      "Историите са психологически привилегировани — използвай ги.",
+      "Използвай структурата на историята: причинност, конфликт, усложнения, герой.",
+      "Използвай мнемотехники там, където съдържанието е по-произволно.",
+      "Внимавай с 'атрактивните дейности' — може да грабват вниманието, но не и правилния смисъл.",
+      "Внимавай с откривателското учене — фокусирай какво точно мислят учениците."
+    ],
+    warn:"Атрактивна дейност не гарантира учене. Учениците може да запомнят забавното, но не и учебното съдържание.",
+    ex:"Ако целта е да разберат значението на Априлското въстание, нека мислят за причините, избора на участниците и последиците — не само да правят плакат.",
+    tip:"След всяка дейност си задай: 'За какво всъщност мислеха учениците?'",
+    qs:["Какво е вероятно да остане в паметта след урока?","Съвпада ли с целта ми?","Насочих ли вниманието към правилния смисъл?"]
+  },
+  {
+    id:4,
+    ch:"Принцип 4",
+    short:"Разбираме новото в контекста на вече известното",
+    principle:"Разбираме нещата в контекста на онова, което вече знаем, а повечето знания са конкретни.",
+    cat:"Знание и разбиране",
+    diff:"Средно",
+    why:"Абстракцията е целта на образованието, но разчитаме на предварителното знание за разбиране. Степени на разбиране: механично знание (без смисъл) — рядко; повърхностно знание — по-честно; дълбоко знание — вижда цялото. Новото учене е първоначално повърхностно; дълбокото разбиране изисква повече връзки.",
+    moves:[
+      "Разбирането е спомняне в прикрита форма.",
+      "Всичко се гради върху вече известното.",
+      "Ситуирай дълбокото учене в термини на предварителното знание.",
+      "Давай примери и карай учениците да ги сравняват.",
+      "Бъди реалистичен/а за нивото на дълбоко знание, постижимо в рамките на урока.",
+      "Тествай дълбоко знание, а не само повърхностно."
+    ],
+    warn:"Не приемай, че щом ученикът може да повтори дефиницията, вече разбира идеята. Прехвърлянето в нов контекст е много по-трудно.",
+    ex:"При 'демокрация' не спирай на определение. Сравни училищен случай, местно решение и национални избори — така дълбоката структура на идеята изпъква.",
+    tip:"Използвай поне два примера и един контрапример за всяко абстрактно понятие.",
+    qs:["С кое познато мога да свържа новата идея?","Кой пример ще помогне, а не ще обърка?","Как ще разбера дали виждат дълбоката връзка?"]
+  },
+  {
+    id:5,
+    ch:"Принцип 5",
+    short:"Практиката прави знанието трайно и достъпно",
+    principle:"Практически е невъзможно да станеш добър в умствена задача без продължителна практика.",
+    cat:"Практика и автоматизация",
+    diff:"Начало",
+    why:"Практиката по време на учене = по-голяма компетентност. Практиката при вече усвоено = затвърдяване за по-сложен материал + намаляване на забравянето + подобрен трансфер. Свръхучене и разпределена практика са много полезни. По-голямата познатост прави трансфера по-вероятен.",
+    moves:[
+      "Работната памет не може да се увеличи с упражнения — но може да се разшири ефективно чрез автоматизация.",
+      "Работната памет е мястото, където се случва мисленето — трябва да я освобождаваш.",
+      "Практиката прави спомените по-трайни И по-лесно достъпни.",
+      "Уверявай се, че упражняват онова, което трябва да стане автоматично.",
+      "Разпределяй практиката — не наведнъж.",
+      "Разнообразявай и смесвай уменията в задачите."
+    ],
+    warn:"Практиката не е само 'още от същото'. Без качество и разпределение ефектът е слаб.",
+    ex:"Вместо един дълъг блок задачи по дроби, връщай по 3-4 задачи в следващите седмици и ги комбинирай с различни приложения.",
+    tip:"По-добре 7 минути на ден в продължение на 5 дни, отколкото 35 минути наведнъж.",
+    qs:["Кое умение трябва да стане автоматично?","Кога ще се върна към него следващата седмица?","Смесил/а ли съм достатъчно различни видове задачи?"]
+  },
+  {
+    id:6,
+    ch:"Принцип 6",
+    short:"Мисленето на начинаещия е различно от мисленето на експерта",
+    principle:"Познанието в началото на обучението е фундаментално различно от познанието в края на обучението.",
+    cat:"Експертност и развитие",
+    diff:"Средно",
+    why:"Начинаещите знаят по-малко от експертите И знанието им е организирано по различен начин. Експертите: имат достъп до правилна информация бързо, знаят какво да игнорират, забелязват фини аспекти, издържат на грешките по-добре, показват по-добър трансфер. 3 етапа: разбиране на постиженията на експертите, разбиране на методите им, практика в използването им. Правилото '10 години' — толкова отнема да станеш експерт.",
+    moves:[
+      "Различавай усвояване на знание (ученици) от създаване на ново знание (какво правят експертите).",
+      "Творческите задачи са мотивиращи, но може да не 'създадат знание' като при експертите.",
+      "Прави мисловните стъпки на експерта видими.",
+      "Давай модели и разработени примери с постепенно нарастваща самостоятелност.",
+      "Фокусирай практика, която води до автоматизация.",
+      "Начинаещите не учат, като правят онова, което правят експертите."
+    ],
+    warn:"'Нека работят като истински учени' звучи добре, но начинаещите не учат чрез имитиране на експертни дейности без подготовка.",
+    ex:"Преди сами да анализират исторически извори, моделирай как историкът проверява надеждност, гледна точка и контекст. После водете заедно. После пускай сами.",
+    tip:"Модел — заедно — самостоятелно. Винаги в тази последователност.",
+    qs:["Какво прави експертът, което трябва да направя видимо?","Коя част учениците още не могат да носят сами?","Какъв междинен етап им липсва?"]
+  },
+  {
+    id:7,
+    ch:"Принцип 7",
+    short:"Децата си приличат повече, отколкото се различават в ученето",
+    principle:"Децата са по-сходни, отколкото са различни по отношение на начина, по който мислят и учат.",
+    cat:"Митове и различия",
+    diff:"Начало",
+    why:"Дефиниции: когнитивна способност = капацитет за успех в определен вид мислене; когнитивен стил = тенденция да мислиш по определен начин. Визуален/слухов/кинестетичен: някои хора имат по-добра слухова или визуална памет, НО не учат по-добре, ако им се преподава по съответния начин. Множествените интелигенции на Гарднър са повече таланти — не можеш да използваш единия, за да компенсираш слабост в друг.",
+    moves:[
+      "Няма доказателства, че преподаването според предпочитан стил води до по-добри резултати.",
+      "Стиловете на учене са 'лепкава' идея поради социалното доказателство и потвърждаващото пристрастие.",
+      "По-полезно е да мислиш за различията в планирането на урока.",
+      "Сменянето на формата помага на учениците да се фокусират отново.",
+      "Всяко дете е уникално и ценно.",
+      "Не използвай думата 'умен' — тя е проблематична."
+    ],
+    warn:"Митът за стиловете на учене е популярен, но популярността не е доказателство. Не етикетирай учениците.",
+    ex:"В урок по география използвай карта, устно обяснение и кратък текст — не защото имаш 'различни стилове' в класа, а защото съдържанието изисква няколко опори.",
+    tip:"Варирай представянето заради съдържанието, не заради митовете.",
+    qs:["Защо използвам точно тази форма на представяне?","Как тя помага на разбирането?","Кое е съдържателно необходимо, а кое е просто модно?"]
+  },
+  {
+    id:8,
+    ch:"Принцип 8",
+    short:"Интелигентността може да се промени с труд",
+    principle:"Децата се различават по интелигентност, но интелигентността може да се промени с упорит труд.",
+    cat:"Мотивация и очаквания",
+    diff:"Начало",
+    why:"Интелигентността е смесица от гени (20-50%?) и среда. Нагласите на ученика, родителя и учителя за интелигентността имат значение — може да бъдат вредни, ако ученикът смята, че е 'умен'. Програмите за промяна на нагласата в мащаб не са работили особено добре. Настигането изисква дълго време.",
+    moves:[
+      "Интелигентността е гъвкава и може да се подобри.",
+      "Учениците с фиксирана нагласа смятат, че усилието е признак на тъпота.",
+      "Учениците с нагласа за растеж смятат, че неуспехът е полезен и усилието = ставаш по-умен.",
+      "Насърчавай нагласата за растеж, като се фокусираш върху усилието.",
+      "Давай предизвикателна работа и показвай, че усилието дава резултат.",
+      "Представяй неуспеха като нещо положително.",
+      "Преподавай учебни стратегии — не приемай, че учениците ги знаят."
+    ],
+    warn:"'Нагласата за растеж' не е само да казваме 'можеш всичко'. Тя изисква реална подкрепа, стратегия и tijd.",
+    ex:"Вместо 'Ти си много умен', кажи: 'Начинът, по който провери решението си по втори начин, ти помогна да стигнеш до верния извод.'",
+    tip:"Смени езика на етикетите ('умен', 'глупав') с език на процеса (усилие, стратегия, напредък).",
+    qs:["Какво послание давам за грешката?","Показвам ли как се напредва, а не само че трябва?","Давам ли достатъчно опора за успех?"]
+  },
+  {
+    id:9,
+    ch:"Принцип 9",
+    short:"Технологията не променя начина, по който учим",
+    principle:"Технологията променя много неща, но не по начина, по който си мислим.",
+    cat:"Технологии",
+    diff:"Средно",
+    why:"Технологията променя много когнитивни процеси, но не начина, по който умът работи. Учениците НЕ са 'дигитални туземци', вниманието не се е променило значително въпреки екранното време. Интерактивните дъски и лаптопите за учениците имат слаб ефект. Въпросът не е 'Какъв проблем мога да реша с тази технология?', а 'Каква технология би помогнала за решаването на ТОЗИ проблем?'",
+    moves:[
+      "Справедливият достъп до хардуер/софтуер е въпрос, с който училищата трябва да се занимаят.",
+      "Тръгвай от учебния проблем, не от инструмента.",
+      "Ако въвеждаш технология — оценявай дали работи.",
+      "Използвай технология внимателно, за да не намалиш практиката и усвояването на умения.",
+      "Помагай на учениците да практикуват устойчиво внимание.",
+      "Имай правила за лични устройства, прилагани от всички.",
+      "Включи родителите в разговора за приемливо екранно време."
+    ],
+    warn:"'Дигитални туземци' не означава, че учениците знаят как да учат добре с технологии.",
+    ex:"Използвай интерактивен тест за бърза проверка на разбиране, но не го замествай с дълбокия разговор или писменото обяснение, когато те са по-подходящи.",
+    tip:"Питай: 'Без тази технология какво нямаше да могат учениците или щяха да правят по-зле?'",
+    qs:["Какъв учебен проблем решавам с тази технология?","Какви разсейвания въвеждам?","Как ще разбера дали си е струвало?"]
+  },
+  {
+    id:10,
+    ch:"Принцип 10",
+    short:"Преподаването се подобрява чрез целенасочена практика",
+    principle:"Преподаването, като всяко сложно когнитивно умение, трябва да се практикува, за да се подобри.",
+    cat:"Развитие на учителя",
+    diff:"Начало",
+    why:"Преподаването е много изискващо за работната памет, изисква богато предметно знание и богато педагогическо съдържателно знание. Проблемът: много подобрение в първите 5 години, после се забавя — стигаме до 'достатъчно добре'. Решението: целенасочена практика — избери едно малко нещо, което искаш да подобриш.",
+    moves:[
+      "Активно търси актуализиране на предметното И педагогическото знание.",
+      "Води бележки след урок — или просто пиши всяка седмица.",
+      "Намери група учители за разговори, книжни клубове, статии.",
+      "Наблюдавай своя клас с друг учител.",
+      "Наблюдавай ученици, които не преподаваш.",
+      "Промени малко по малко — и ефектите ще се натрупат."
+    ],
+    warn:"Опитът сам по себе си не гарантира растеж. Без рефлексия лесно спираме на 'достатъчно добре'.",
+    ex:"За две седмици работиш само върху едно: как задаваш въпроси с по-висока когнитивна трудност. След всеки урок записваш по 3 примера и реакциите на учениците.",
+    tip:"Една промяна. Една седмица. Едно наблюдение.",
+    qs:["Кое едно действие ще подобря сега?","Как ще разбера дали има ефект?","От кого мога да получа полезна обратна връзка?"]
+  }
+];
+
+const pathSteps = [
+  {title:"Как работи ученето", sub:"Базови принципи за всеки учител", ids:[1,2,3,4,5]},
+  {title:"Как се развива майсторство", sub:"Дълъг хоризонт и целенасочена практика", ids:[6,8,10]},
+  {title:"От какво да се пазим", sub:"Популярни идеи без доказателства", ids:[7,9]}
+];
+
+// Build category filter
+const cats = [...new Set(data.map(p=>p.cat))];
+const sel = document.getElementById('cat-sel');
+cats.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;sel.appendChild(o)});
+
+let activeId = 1;
+let view = 'map';
+
+function filtered(){
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const cat = document.getElementById('cat-sel').value;
+  return data.filter(p=>{
+    const catOk = !cat || p.cat===cat;
+    const text=[p.short,p.principle,p.why,p.cat,p.warn,p.ex,...p.moves,...p.qs].join(' ').toLowerCase();
+    return catOk&&(!q||text.includes(q));
+  });
+}
+
+function render(){
+  const list = filtered();
+  if(!list.find(p=>p.id===activeId)&&list[0]) activeId=list[0].id;
+
+  // count
+  document.getElementById('cnt').textContent=list.length;
+
+  // cards
+  const grid=document.getElementById('cards');
+  grid.innerHTML='';
+  list.forEach(p=>{
+    const btn=document.createElement('button');
+    btn.className='p-card'+(p.id===activeId?' on':'');
+    btn.innerHTML=`<div class="p-card-row"><span class="p-card-ch">${p.ch}</span><span class="p-card-diff">${p.diff}</span></div>
+      <div class="p-card-short">${p.short}</div>
+      <div class="p-card-cat">${p.cat}</div>`;
+    btn.onclick=()=>{activeId=p.id;render()};
+    grid.appendChild(btn);
+  });
+
+  // detail
+  const p=list.find(x=>x.id===activeId)||list[0]||data[0];
+  const det=document.getElementById('detail');
+  if(!p){det.innerHTML='<div class="empty-state">Няма резултати по избраните критерии.</div>';return}
+  det.innerHTML=`
+    <div class="d-eyebrow"><span class="d-tag">${p.ch}</span><span class="d-tag">${p.cat}</span><span class="d-tag">${p.diff}</span></div>
+    <div class="d-title">${p.short}</div>
+    <div class="d-principle">${p.principle}</div>
+    <div class="d-why">${p.why}</div>
+    <div class="d-section">
+      <div class="d-section-title">Какво да правя в клас</div>
+      <ul class="moves-list">${p.moves.map(m=>`<li><span class="dot"></span><span>${m}</span></li>`).join('')}</ul>
+    </div>
+    <div class="d-section warn">
+      <div class="d-section-title">Внимавай</div>
+      <p>${p.warn}</p>
+    </div>
+    <div class="d-section ex">
+      <div class="d-section-title">Пример от практиката</div>
+      <p>${p.ex}</p>
+    </div>
+    <div class="d-section tip">
+      <div class="d-section-title">Съвет за начинаещия учител</div>
+      <p>${p.tip}</p>
+    </div>
+    <div class="d-section qs">
+      <div class="d-section-title">3 въпроса за рефлексия</div>
+      <div class="q-list qs-wrap">${p.qs.map(q=>`<div class="q-item">${q}</div>`).join('')}</div>
+    </div>`;
+}
+
+function renderPath(){
+  const cont=document.getElementById('path-steps');
+  cont.innerHTML='';
+  pathSteps.forEach((step,si)=>{
+    const ps=data.filter(p=>step.ids.includes(p.id));
+    const div=document.createElement('div');
+    div.className='path-step';
+    div.innerHTML=`<div class="path-step-head">
+      <div class="step-num">${si+1}</div>
+      <div><h3>${step.title}</h3><p>${step.sub}</p></div>
+    </div>
+    <div class="path-cards">${ps.map(p=>`
+      <div class="path-card">
+        <div class="path-card-meta"><span class="path-card-ch">${p.ch}</span><span class="path-card-cat">${p.cat}</span></div>
+        <h4>${p.short}</h4>
+        <p>${p.why.slice(0,140)}...</p>
+        <div class="mini"><strong>Мини действие:</strong> ${p.tip}</div>
+      </div>`).join('')}
+    </div>`;
+    cont.appendChild(div);
+  });
+}
+
+function setView(v){
+  view=v;
+  document.getElementById('view-map').style.display=v==='map'?'':'none';
+  document.getElementById('view-path').style.display=v==='path'?'':'none';
+  document.getElementById('btn-map').className='vbtn'+(v==='map'?' on':'');
+  document.getElementById('btn-path').className='vbtn'+(v==='path'?' on':'');
+  if(v==='path') renderPath();
+}
+
+render();
+</script>
+</body>
+</html>
